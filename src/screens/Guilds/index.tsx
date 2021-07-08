@@ -5,11 +5,13 @@ import {
 } from 'react-native';
 
 import { styles } from './styles';
-import { Guild } from '../../components/Guild';
+import { Guild, GuildProps } from '../../components/Guild';
 import { ListDivider } from '../../components/ListDivider';
+type Props = {
+    handleGuildSelected: (guild: GuildProps) => void
+}
 
-
-export function Guilds() {
+export function Guilds({handleGuildSelected}: Props) {
     const guilds = [
         {
             id: '1',
@@ -25,7 +27,10 @@ export function Guilds() {
                 data={guilds}
                 keyExtractor={item => item.id}
                 renderItem={({item}) => (
-                    <Guild data={item} />
+                    <Guild 
+                        data={item} 
+                        onPress={() => handleGuildSelected(item)}
+                    />
                 )}
                 showsVerticalScrollIndicator={false}
                 ItemSeparatorComponent={() => <ListDivider />}
