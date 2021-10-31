@@ -5,6 +5,8 @@ import {Rajdhani_500Medium, Rajdhani_700Bold} from '@expo-google-fonts/rajdhani'
 import AppLoading from 'expo-app-loading'
 import { useFonts } from 'expo-font'
 
+import { AuthProvider } from './src/hooks/auth'
+
 import { Routes } from './src/routes';
 import {Background} from './src/components/Background'
 
@@ -27,7 +29,9 @@ export default function App() {
         translucent
       />
       {/* Vai deixar a barra de status da mesma cor que a do fundo */}
-      <Routes />
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </Background>
   );
 }
